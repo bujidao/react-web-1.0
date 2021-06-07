@@ -21,6 +21,10 @@ const menuListData = [
     label: 'User',
     linkTo: '/user',
   },
+  {
+    label: 'List',
+    linkTo: '/list',
+  },
 ];
 
 /**

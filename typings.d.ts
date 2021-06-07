@@ -8,3 +8,12 @@ declare module '*.svg' {
   const url: string;
   export default url;
 }
+
+// axios
+
+// import { AxiosRequestConfig } from 'axios'
+// declare module 'axios' {
+//   export interface AxiosRequestConfig {
+//     apiModel?: string;
+//   }
+// }
