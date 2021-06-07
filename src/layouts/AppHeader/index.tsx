@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './index.less';
 import { history } from 'umi';
 import { MentItemType } from './index.d';
+import classNames from 'classnames';
 
 import { ReactComponent as Logo } from '../../icons/svg/react.svg';
 
@@ -58,7 +59,7 @@ const menuListItems = menuListData.map((item) => {
 class AppHeader extends React.Component {
   render() {
     return (
-      <div className={styles.header}>
+      <div className={classNames(styles.header, styles.theme)}>
         <div className="logo">
           <Logo width={90} height={120} className={styles.mylogo} />
         </div>

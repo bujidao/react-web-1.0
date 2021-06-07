@@ -21,10 +21,6 @@ class App extends React.Component {
         <button aria-label="按钮" aria-required="true">
           按钮
         </button>
-        <img
-          src="https://cdn.onlinewebfonts.com/svg/img_433041.png"
-          alt="这是一个图片"
-        />
       </div>
     );
   }
