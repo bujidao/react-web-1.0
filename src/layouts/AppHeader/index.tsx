@@ -1,37 +1,21 @@
 import React from 'react';
 import styles from './index.less';
 import { history } from 'umi';
-import { MentItemType } from './index.d';
+import { MenuItemType, MenuItemInfoType } from './index.d';
 import classNames from 'classnames';
+import routes from '@/routes/index';
 
 import { ReactComponent as Logo } from '../../icons/svg/react.svg';
 
 /**
- * 数据列表
+ * menu list
  */
-const menuListData = [
-  {
-    label: 'Home',
-    linkTo: '/home',
-  },
-  {
-    label: 'About',
-    linkTo: '/about',
-  },
-  {
-    label: 'User',
-    linkTo: '/user',
-  },
-  {
-    label: 'List',
-    linkTo: '/list',
-  },
-];
+const menuList: Array<MenuItemType> = [];
 
 /**
- * 单个组件
+ * menu
  */
-class MenuListItem extends React.Component<MentItemType> {
+class MenuItem extends React.Component<MenuItemInfoType> {
   constructor(props: any) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -42,29 +26,50 @@ class MenuListItem extends React.Component<MentItemType> {
   }
 
   render() {
-    return <li onClick={this.handleClick}>{this.props.itemInfo.label}</li>;
+    return (
+      <li onClick={this.handleClick} className={styles['menu-item']}>
+        {this.props.itemInfo.label}
+      </li>
+    );
   }
 }
 
-/**
- * 数据循环拼接
- */
-const menuListItems = menuListData.map((item) => {
-  return <MenuListItem itemInfo={item} key={item.linkTo} />;
-});
-
-/**
- * 最终的header组件
- */
 class AppHeader extends React.Component {
+  constructor(props: any) {
+    super(props);
+    this.filterMenu(routes);
+  }
+
+  filterMenu(routes: any) {
+    for (let route of routes) {
+      if (route.hasOwnProperty('meta') && route.meta.isMenu) {
+        menuList.push({
+          label: route.meta.title,
+          linkTo: route.path,
+        });
+      }
+      if (route.hasOwnProperty('routes') && route.routes.length) {
+        this.filterMenu(route.routes);
+      }
+    }
+  }
+
+  handleGoHome() {
+    history.push('/');
+  }
+
   render() {
     return (
-      <div className={classNames(styles.header)}>
-        <div className={classNames(styles.logo)}>
+      <nav className={classNames(styles.header)}>
+        <div className={classNames(styles.logo)} onClick={this.handleGoHome}>
           <Logo width={90} height={120} className={styles.mylogo} />
         </div>
-        <ul className={classNames(styles.menu)}>{menuListItems}</ul>
-      </div>
+        <ul className={classNames(styles.menu)}>
+          {menuList.map((item: any) => (
+            <MenuItem itemInfo={item} key={item.linkTo} />
+          ))}
+        </ul>
+      </nav>
     );
   }
 }

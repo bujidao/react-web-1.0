@@ -1,6 +1,8 @@
-export type MentItemType = {
-  itemInfo: {
-    label: string,
-    linkTo: string
-  }
-}
+export type MenuItemType = {
+  label: string;
+  linkTo: string;
+};
+
+export type MenuItemInfoType = {
+  itemInfo: MenuItemType;
+};

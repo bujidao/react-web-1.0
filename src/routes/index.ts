@@ -6,10 +6,19 @@ const routes = [
     component: Layout,
     routes: [
       {
+        path: '/',
+        component: '@/pages/home',
+        meta: {
+          title: '首页',
+          isMenu: true,
+        },
+      },
+      {
         path: '/user',
         component: '@/pages/user',
         meta: {
           title: '用户中心',
+          isMenu: true,
         },
       },
       {
@@ -17,13 +26,7 @@ const routes = [
         component: '@/pages/about',
         meta: {
           title: '关于我们',
-        },
-      },
-      {
-        path: '/home',
-        component: '@/pages/home',
-        meta: {
-          title: '首页',
+          isMenu: true,
         },
       },
       {
@@ -31,12 +34,14 @@ const routes = [
         component: '@/pages/list',
         meta: {
           title: '列表测试',
+          isMenu: true,
         },
       },
       {
         component: './404',
         meta: {
           title: '404',
+          isMenu: true,
         },
       },
     ],

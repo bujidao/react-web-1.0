@@ -13,7 +13,7 @@ export function render(oldRender: Function) {
     if (auth.isLogin) {
       oldRender();
     } else {
-      history.push('/home');
+      history.push('/');
       oldRender();
     }
   });

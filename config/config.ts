@@ -19,4 +19,7 @@ export default defineConfig({
     devServerRender: false,
   },
   fastRefresh: {},
+  targets: {
+    ie: 11,
+  },
 });
