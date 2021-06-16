@@ -59,11 +59,11 @@ const menuListItems = menuListData.map((item) => {
 class AppHeader extends React.Component {
   render() {
     return (
-      <div className={classNames(styles.header, styles.theme)}>
-        <div className="logo">
+      <div className={classNames(styles.header)}>
+        <div className={classNames(styles.logo)}>
           <Logo width={90} height={120} className={styles.mylogo} />
         </div>
-        <ul>{menuListItems}</ul>
+        <ul className={classNames(styles.menu)}>{menuListItems}</ul>
       </div>
     );
   }

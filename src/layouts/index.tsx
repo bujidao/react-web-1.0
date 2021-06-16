@@ -1,19 +1,22 @@
-import React from 'react'
+import React from 'react';
 
 import AppHeader from './AppHeader';
 import AppMain from './AppMain';
 import AppFooter from './AppFooter';
+import styles from './index.less';
 
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className={styles.app}>
         <AppHeader />
-        <AppMain children={this.props.children}/>
+        <div className={styles.main}>
+          <AppMain children={this.props.children} />
+        </div>
         <AppFooter />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

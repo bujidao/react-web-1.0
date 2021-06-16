@@ -1,5 +1,9 @@
+// enter file
 import { history } from 'umi';
 import getPageTitle from '@/utils/get-page-title';
+
+import './styles/index.less';
+// import './styles/theme.less'
 
 /**
  * render
